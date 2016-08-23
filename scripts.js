@@ -3,13 +3,10 @@ var guessButton = document.querySelector('#guess');
 var clearButton = document.querySelector('#clear');
 var displayGuess = document.querySelector('#display-guess')
 
-//we need an event listener for clicking on the guess button
-
 
 // the "guess" button that will trigger displayUserGuess function to change userInput p tag to the userGuess
 guessButton.addEventListener('click',
   function () {
-    debugger;
     var userGuessValue = getUserGuessValue();
     changeGuess(userGuessValue);
   });
@@ -23,6 +20,7 @@ function changeGuess(text) {
 function getUserGuessValue () {
   return userGuess.value;
 }
+
 
 // clear button notes:
 //use querySelector to select input box and refresh/clear it
