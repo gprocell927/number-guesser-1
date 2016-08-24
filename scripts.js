@@ -43,20 +43,19 @@ guessButton.addEventListener('click', function (e) {
     changeGuess(userGuessValue);
     guessMessage();
 
+    resetButton.disabled = false;
+
   });
 
-//.innerText = userGuess
 
 function changeGuess(text) {
   displayGuess.innerText = text;
 }
-//this function will get the value of the user input
+
 function getUserGuessValue () {
   return userGuess.value;
 }
 
-// clear button notes:
-//use querySelector to select input box and refresh/clear it
 function clearField (){
   document.getElementById('user-guess').reset();
 }
@@ -67,8 +66,16 @@ clearButton.addEventListener('click',
   });
 
 resetButton.addEventListener('click',function () {
+  if (randomNumber === parseInt(displayGuess.innerText))  {
+    debugger;
+
+  }
+
+
   clearField();
   randomNumber = randomNumberGenerator();
+
+
 });
 
 
@@ -77,13 +84,14 @@ if (userGuess.value === "") {
   clearButton.disabled = true;
 }
 
-else if (userGuess.value === "" && displayMessage.innerText === "") {
+if (userGuess.value === "" && displayMessage.innerText === "") {
   resetButton.disabled = true;
-  alert ("reset disabled");
 };
 
-// on key press within the input field enable clear button, after hitting enter or clicking guess enable reset button
 userGuess.addEventListener('keydown', function () {
-    resetButton.disabled = false;
     clearButton.disabled = false;
   });
+
+userGuess.addEventListener('click', function () {
+  clearButton.disabled = false;
+});
