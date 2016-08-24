@@ -18,11 +18,18 @@ function guessMessage () {
   if (randomNumber === num)  {
     displayMessage.innerText = "You got it!"
   }
+
+  else if (num < 0 || num > 10) {
+    displayMessage.innerText = "Sorry, that number is not in the available range."
+  }
+
   else if (randomNumber < num) {
     displayMessage.innerText = "Sorry, that guess is too high. Try a lower number."
   }
+
   else {
     displayMessage.innerText = "Sorry, that guess is too low. Try a higher number."
+
   }
 };
 //we need an event listener for clicking on the guess button
@@ -63,3 +70,20 @@ resetButton.addEventListener('click',function () {
   clearField();
   randomNumber = randomNumberGenerator();
 });
+
+
+
+if (userGuess.value === "") {
+  clearButton.disabled = true;
+}
+
+else if (userGuess.value === "" && displayMessage.innerText === "") {
+  resetButton.disabled = true;
+  alert ("reset disabled");
+};
+
+// on key press within the input field enable clear button, after hitting enter or clicking guess enable reset button
+userGuess.addEventListener('keydown', function () {
+    resetButton.disabled = false;
+    clearButton.disabled = false;
+  });
