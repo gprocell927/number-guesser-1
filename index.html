@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" href="./styles.css" media="screen" title="no title" charset="utf-8">
+  <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
+</head>
+<title>Fabulous Number Guesser</title>
+<body>
+  <section id = "number-guesser">
+  <h1>Fabulous Number Guesser</h1>
+
+  <p>You last guess was...</p>
+  <p id="display-guess"></p>
+  <p id="display-message"></p>
+  <form id="number-input">
+    <input type="number" name="input-number" min= "1" max="100" id="user-guess"/>
+
+    <button id="guess">Guess</button>
+    <button id="clear">Clear</button>
+    <button id="reset">Reset Game</button>
+</form>
+  <form id="number-input">
+
+    <input type="number" name="input-min-number" maxlength="4" id="inputMin"/>
+    <button id="minButton">Set Min</button>
+
+    <input type="number" name="input-max-number" maxlength="4" id="inputMax"/>
+    <button id="maxButton">Set Max</button>
+
+  </form>
+  </section>
+  <script src="scripts.js"></script>
+</body>
+
+</html>

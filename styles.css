@@ -1,0 +1,15 @@
+body {
+  font-family: 'Bungee Inline', cursive;
+  color: white;
+  text-align: center;
+  background: url("./spaceJam.jpg") no-repeat, fixed; center;
+}
+
+#number-guesser {
+  margin-top: 250px;
+  margin-left: 30%;
+  border: 3px double white;
+  width: 40%;
+  padding-top:30px;
+  padding-bottom:30px;
+}
