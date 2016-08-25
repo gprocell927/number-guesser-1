@@ -5,21 +5,39 @@ var displayGuess = document.querySelector('#display-guess');
 var randomNumber = randomNumberGenerator();
 var displayMessage = document.querySelector('#display-message');
 var resetButton = document.querySelector('#reset');
+var minButton = document.querySelector('#inputMin');
+var maxButton = document.querySelector('#inputMax');
+
+minButton.addEventListener('click', function (e) {
+
+    var userMinValue = inputMin.value;
+    userGuess.min = userMinValue;
+    resetButton.disabled = false;
+  });
+
+  maxButton.addEventListener('click', function (e) {
+
+      var userMaxValue = inputMax.value;
+      userGuess.max = userMaxValue;
+      resetButton.disabled = false;
+    });
+
+
 
 function randomNumberGenerator(){
-  return parseInt(Math.random() * (10 - 1) + 1);
+  return parseInt(Math.random() * (userGuess.max - userGuess.min) + 1);
 }
 
 function guessMessage () {
   var num = parseInt(userGuess.value);
   if (isNaN(num)) {
-    return displayMessage.innerText = "No."
+    return displayMessage.innerText = "No. Try again."
   }
   if (randomNumber === num)  {
     displayMessage.innerText = "You got it!"
   }
 
-  else if (num < 0 || num > 10) {
+  else if (num <= 0 || num > 100) {
     displayMessage.innerText = "Sorry, that number is not in the available range."
   }
 
@@ -32,16 +50,18 @@ function guessMessage () {
 
   }
 };
-//we need an event listener for clicking on the guess button
 
-
-// the "guess" button that will trigger displayUserGuess function to change userInput p tag to the userGuess
 guessButton.addEventListener('click', function (e) {
     e.preventDefault();
 
     var userGuessValue = getUserGuessValue();
     changeGuess(userGuessValue);
     guessMessage();
+    var num = parseInt(userGuess.value);
+
+    if (parseInt(displayGuess.innerText) === num){
+      nextLevel();
+    };
 
     resetButton.disabled = false;
 
@@ -57,7 +77,7 @@ function getUserGuessValue () {
 }
 
 function clearField (){
-  document.getElementById('user-guess').reset();
+  userGuess.value = ''
 }
 
 clearButton.addEventListener('click',
@@ -66,19 +86,15 @@ clearButton.addEventListener('click',
   });
 
 resetButton.addEventListener('click',function () {
-  if (randomNumber === parseInt(displayGuess.innerText))  {
-    debugger;
-
-  }
-
-
   clearField();
   randomNumber = randomNumberGenerator();
+  });
 
 
-});
-
-
+function nextLevel() {
+    userGuess.max = parseInt(userGuess.max) + 10;
+    userGuess.min = parseInt(userGuess.min) - 10;
+};
 
 if (userGuess.value === "") {
   clearButton.disabled = true;
